@@ -1,0 +1,25 @@
+{
+  "name": "clone-instagram",
+  "version": "0.1.0",
+  "description": "Clone de instagram",
+  "main": "index.js",
+  "scripts": {
+    "test": "dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pablomdd/clone-instagram.git"
+  },
+  "author": "pablomdd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pablomdd/clone-instagram/issues"
+  },
+  "homepage": "https://github.com/pablomdd/clone-instagram#readme",
+  "dependencies": {
+    "apollo-server": "^2.9.16",
+    "graphql": "^14.6.0",
+    "graphql-import": "^0.7.1",
+    "mongoose": "^5.8.10"
+  }
+}
