@@ -6,7 +6,7 @@ const resolvers = require('./resolvers')
 const typeDefs = importSchema(__dirname + '/schema.graphql');   
 
 const MONGO_URI =
-  'mongodb+srv://prueba3:prueba3@cluster0-vp6hz.mongodb.net/meetup?retryWrites=true&w=majority';
+  'mongodb+srv://donas:TJi5dJrlTk4wFbcW@cluster0-kiojd.mongodb.net';
 
 mongoose.connect(MONGO_URI, {
 	useNewUrlParser: true,
