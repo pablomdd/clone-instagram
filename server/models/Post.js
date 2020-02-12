@@ -17,9 +17,11 @@ const PostSchema = new Schema({
     },
     date:{
         type: Date
-    }
-
-
+    },
+    is_active:{
+		type: Boolean,
+		default: true
+	}
 })
 
 module.exports = mongoose.model('Posts',PostSchema);
