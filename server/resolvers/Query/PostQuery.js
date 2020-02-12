@@ -12,6 +12,6 @@ const getPost = (root,args,context) => {
 
 
 module.exports = {
-	allPost,
+	allPosts,
 	getPost
 };

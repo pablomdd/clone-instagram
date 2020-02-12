@@ -37,7 +37,7 @@ const UserSchema = new Schema({
         ref:'users'
     },
     follow:{
-        type:[Schema.Types:ObjectId],
+        type:[Schema.Types.ObjectId],
         ref:'users'
     }
 })
