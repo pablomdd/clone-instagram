@@ -38,6 +38,7 @@ enum GENDER{
 
 type Post{
     photo:String
+    title:String
     description:String
     comments:String
     likes:[User]

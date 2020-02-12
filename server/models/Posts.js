@@ -3,6 +3,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const EventSchema  = new Schema({
+	photo:{
+		type:String,
+		required:true
+	},
 	title :{
 		type:String,
 		required:true
@@ -12,26 +16,10 @@ const EventSchema  = new Schema({
 		required:true,
 	},
 	date :Date,
-	address:{
-		street:String,
-		city:String,
-		number: String,
-		country:String,
-		state:String,
-		zip:String
-	},
-	assistants:{
-		type:[Schema.Types.ObjectId],
-		ref:'users'
-	},
-	created_by:{
-		type:Schema.Types.ObjectId,
-		ref:'users'
-	},
-	banner:{
+	comments:{
 		type: String
 	},
-	tags:{
+	likes:{
 		type:[String]
 	},
 	is_active:{
@@ -41,4 +29,5 @@ const EventSchema  = new Schema({
 
 },{timestamps:true} );
 
-module.exports = mongoose.model('events',EventSchema);
+module.exports = mongoose.model('posts',EventSchema);
+
