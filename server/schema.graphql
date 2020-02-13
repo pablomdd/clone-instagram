@@ -1,0 +1,52 @@
+type Query{
+    allUsers(is_active:Boolean):[User]
+    allPost:[Post]
+    getOneUser(_id:ID,email:String):User
+    getPost(_id:ID):[Post]
+}
+input addUser{
+    _id:ID
+    first_name:String
+    last_name:String
+    nick_name:String
+    email:String
+    password:String
+    gender: GENDER
+    biography:String
+}
+
+type User{
+    _id:ID
+    first_name:String
+    last_name:String
+    nick_name:String
+    email:String
+    password:String
+    gender: GENDER
+    post_create:String
+    profile_photo:String
+    biography:String
+    followers:[User]
+    follow:[User]
+    is_active:Boolean
+}
+enum GENDER{
+    'M',
+    'F',
+    'O'
+}
+
+type Post{
+    photo:String
+    description:String
+    comments:String
+    likes:[User]
+    date:String
+    is_active:Boolean
+}
+input addPost{
+    photo:String
+    description:String
+    comments:String
+    date:String
+}
