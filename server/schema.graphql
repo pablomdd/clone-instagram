@@ -1,3 +1,6 @@
+scalar Upload
+directive @auth on FIELD_DEFINITION | FIELD
+
 type Query{
     allUsers(is_active:Boolean):[User]
     allPost:[Post]

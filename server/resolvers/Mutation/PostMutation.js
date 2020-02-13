@@ -11,7 +11,7 @@ const createPost = async(root,args,context) => {
 
 
 const updatePost = async(root,args,context) => {
-	const PostService = await PostServices.getPostByID(args.id);
+	const post = await PostServices.getPostByID(args.id);
 	if(context.user._id === post.created_by){
 		const newPost = await PostServices.updatePost(args.id,args.data);
 		return newPost;
@@ -30,21 +30,8 @@ const deletePost = async(root,args,context) => {
 	}
 };
 
-const joinPost = async(root,args,context) => {
-	await PostServices.addUserToPost(args.id,context.user.id);
-	await UserServices.addPostToUser(context.user._id,args.id);
-	return{code:200,message:'Joined Post successfully'};
-}; 
-
-const leavePost = async(root,args,context) => {
-	await PostServices.removeUserFromPost(root,args,context);
-	await UserServices.removePostFromUser(context.user._id,args.id);
-	return {code:200,message:'Removed Post successfully'};
-};
-
 module.exports = {
 	createPost,
 	updatePost,
-	joinPost,
 	deletePost
 };

@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const EventSchema  = new Schema({
+const PostSchema  = new Schema({
 	photo:{
 		type:String,
 		required:true
@@ -20,7 +20,7 @@ const EventSchema  = new Schema({
 		type: String
 	},
 	likes:{
-		type:[String]
+		type: String
 	},
 	is_active:{
 		type: Boolean,
@@ -29,5 +29,5 @@ const EventSchema  = new Schema({
 
 },{timestamps:true} );
 
-module.exports = mongoose.model('posts',EventSchema);
+module.exports = mongoose.model('posts',PostSchema);
 
