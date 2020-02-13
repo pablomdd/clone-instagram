@@ -12,7 +12,7 @@ const newUser = async(root,{data},context,info) => {
 	return createUser(data);
 
 };
-    
+
 const login = async(root,args) => {
 	const token = await authenticate(args);
 	return {
