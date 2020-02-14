@@ -8,14 +8,11 @@ const verifyToken = require ('./utils/verifyToken');
 const AuthDirective = require('./resolvers/Directives/AuthDirective');
 
 
-const typeDefs = importSchema(__dirname + '/schema.graphql');
+async function start(){
 
-// const schema = {
-//     resolvers,
-//     typeDefs
-// }
+	const typeDefs = await importSchema(__dirname +  '/schema.graphql');
 
-const MONGO_URI =
+	const MONGO_URI =
   'mongodb+srv://donas:TJi5dJrlTk4wFbcW@cluster0-kiojd.mongodb.net';
 
 mongoose.connect(MONGO_URI, {
@@ -52,3 +49,16 @@ const server = new ApolloServer({
 server.listen().then(({ url }) => {
 	console.log(`Server starts in : ${url}`);
 });
+
+
+}
+
+
+start();
+
+
+// const schema = {
+//     resolvers,
+//     typeDefs
+// }
+

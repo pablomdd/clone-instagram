@@ -3,15 +3,15 @@ directive @auth on FIELD_DEFINITION | FIELD
 
 type Query{
     allUsers(is_active:Boolean):[User]
-    allPost:[Post]
+    allPosts:[Post]
     getOneUser(_id:ID,email:String):User
     getPost(_id:ID):[Post]
 }
 input addUser{
     _id:ID
-    first_name:String
-    last_name:String
-    nick_name:String
+    first_name:String!
+    last_name:String!
+    nick_name:String!
     email:String
     password:String
     gender: GENDER
@@ -34,9 +34,9 @@ type User{
     is_active:Boolean
 }
 enum GENDER{
-    'M',
-    'F',
-    'O'
+    M
+    F
+    O
 }
 
 type Post{
