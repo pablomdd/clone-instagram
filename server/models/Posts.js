@@ -5,7 +5,6 @@ const Schema = mongoose.Schema;
 const PostSchema  = new Schema({
 	photo:{
 		type:String,
-		required:true
 	},
 	title :{
 		type:String,

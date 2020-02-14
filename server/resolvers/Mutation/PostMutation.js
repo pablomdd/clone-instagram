@@ -2,9 +2,10 @@ const PostServices = require('../../services/PostService');
 const UserServices = require('../../services/UserService');
 
 const createPost = async(root,args,context) => {
-	args.created_by = context.user._id;
+	// args.created_by = context.user._id;
 	const post = await PostServices.createPost(args.data);
-	await UserServices.addCreatedPost(context.user._id, post._id);
+	console.log(post);
+	// await UserServices.addCreatedPost(args.data.created_by, post._id);
 	return post;
 };
 

@@ -12,47 +12,44 @@ async function start(){
 
 	const typeDefs = await importSchema(__dirname +  '/schema.graphql');
 
-	const MONGO_URI =
-  'mongodb+srv://donas:TJi5dJrlTk4wFbcW@cluster0-kiojd.mongodb.net';
+	const MONGO_URI = 'mongodb+srv://donas:TJi5dJrlTk4wFbcW@cluster0-kiojd.mongodb.net';
 
-mongoose.connect(MONGO_URI, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true
-});
+	mongoose.connect(MONGO_URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	});
 
-const mongo = mongoose.connection;
+	const mongo = mongoose.connection;
 
-const cors = {
-	origin: process.env.WHITELIST
-};
+	const cors = {
+		origin: process.env.WHITELIST
+	};
 
-mongo
-	.on('error', error => console.log(error))
-	.once('open', () => console.log('Connected to database'));
-
-
-const schema = makeExecutableSchema({
-	typeDefs,
-	resolvers,
-	schemaDirectives:{
-		auth:AuthDirective
-	}
-});
+	mongo
+		.on('error', error => console.log(error))
+		.once('open', () => console.log('Connected to database'));
 
 
-const server = new ApolloServer({ 
-	schema,
-	cors,
-	context: ({req}) => verifyToken(req)
-});
+	const schema = makeExecutableSchema({
+		typeDefs,
+		resolvers,
+		schemaDirectives:{
+			auth:AuthDirective
+		}
+	});
 
-server.listen().then(({ url }) => {
-	console.log(`Server starts in : ${url}`);
-});
 
+	const server = new ApolloServer({ 
+		schema,
+		cors,
+		context: ({req}) => verifyToken(req)
+	});
+
+	server.listen().then(({ url }) => {
+		console.log(`Server starts in : ${url}`);
+	});
 
 }
-
 
 start();
 

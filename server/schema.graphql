@@ -7,12 +7,28 @@ type Query{
     getOneUser(_id:ID,email:String):User
     getPost(_id:ID):[Post]
 }
+type Mutation{
+    newUser(data:addUser!):User
+    login(password:String!email:String!):String
+    updateUser(data:UserUpdate!,id:ID):User 
+    deleteUser(id:ID!):Message
+    createPost(data:PostAdd!):Post
+    updatePost(data:PostEdit!):Post
+    deletePost(id:ID):Message 
+    
+}
+
+type Message{
+    code:Int
+    message:String
+}
+
 input addUser{
     _id:ID
     first_name:String!
     last_name:String!
     nick_name:String!
-    email:String
+    email:String    
     password:String
     gender: GENDER
     biography:String
@@ -40,17 +56,38 @@ enum GENDER{
 }
 
 type Post{
+    _id:ID
     photo:String
-    title:String
+    title:String!
     description:String
     comments:String
     likes:[User]
     date:String
     is_active:Boolean
 }
-input addPost{
+input PostAdd{
+    _id:ID
     photo:String
-    description:String
-    comments:String
+    description:String!
+    comments:String!
     date:String
+    created_by:ID
+    title:String
+}
+
+input PostEdit{
+    title:String
+    description:String
+    is_active:Boolean
+
+}
+input UserUpdate{
+    first_name:String
+    last_name:String
+    nick_name:String
+    email:String
+    password:String
+    profile_photo:String
+    biography:String
+    is_active:Boolean
 }
